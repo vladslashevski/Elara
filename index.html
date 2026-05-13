@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Академия Элара — Обучение эзотерике с Алёной Лаской: курсы по Таро, рунам, астрологии</title>
+    <meta name="description" content="Онлайн-академия Элара — бесплатные и платные курсы по Таро, рунам, астрологии, свечной магии. Обучение с нуля до профи. 11 000+ учеников.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cta: { DEFAULT: '#c0392b', hover: '#a93226', light: '#f9eaea', dark: '#922b21' },
+                        gray: { 50: '#fafafa', 100: '#f5f5f5', 150: '#efefef', 200: '#e5e5e5', 300: '#d4d4d4', 400: '#a3a3a3', 500: '#737373', 600: '#525252', 700: '#404040', 800: '#262626', 900: '#171717' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1a1a1a; font-size: 16px; line-height: 1.6; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f5f5f5; }
+        ::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
+
+        .flagship-paid {
+            background: #fff;
+            border: 2px solid #c0392b;
+            transition: all 0.35s ease;
+            box-shadow: 0 2px 12px rgba(192,57,43,0.06);
+        }
+        .flagship-paid:hover {
+            box-shadow: 0 8px 30px rgba(192,57,43,0.12);
+            transform: translateY(-4px);
+        }
+        .flagship-free {
+            background: #fff;
+            border: 2px solid #22c55e;
+            transition: all 0.35s ease;
+            box-shadow: 0 2px 12px rgba(34,197,94,0.06);
+        }
+        .flagship-free:hover {
+            box-shadow: 0 8px 30px rgba(34,197,94,0.1);
+            transform: translateY(-4px);
+        }
+        .course-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            border-color: #c0392b;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .mini-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+        .mini-card:hover {
+            border-color: #d4d4d4;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+        .btn-cta {
+            background: #c0392b;
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-cta:hover {
+            background: #a93226;
+            box-shadow: 0 4px 16px rgba(192,57,43,0.3);
+            transform: translateY(-1px);
+        }
+        .btn-cta-outline {
+            border: 2px solid #c0392b;
+            color: #c0392b;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-cta-outline:hover {
+            background: #c0392b;
+            color: #fff;
+        }
+        .badge-hit {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #c0392b;
+        }
+        .badge-free-tag {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+        }
+        .section-bg { background: #f9fafb; }
+        .section-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5e5e5, transparent);
+        }
+        .form-input {
+            background: #fff;
+            border: 1.5px solid #e5e5e5;
+            color: #1a1a1a;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #c0392b;
+            box-shadow: 0 0 0 3px rgba(192,57,43,0.08);
+        }
+        .form-input::placeholder { color: #a3a3a3; }
+        .course-radio {
+            background: #fafafa;
+            border: 1.5px solid #e5e5e5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .course-radio:hover { border-color: #d4d4d4; background: #f5f5f5; }
+        .course-radio.selected {
+            border-color: #c0392b;
+            background: #fef2f2;
+        }
+        .stat-box {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+        }
+        .faq-item { border-bottom: 1px solid #e5e5e5; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-item.open .faq-answer { max-height: 400px; }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-chevron { transition: transform 0.3s ease; }
+
+        @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        .float-slow { animation: floatSlow 5s ease-in-out infinite; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .anim-in { animation: fadeInUp 0.7s ease forwards; }
+        .anim-d2 { animation-delay: 0.2s; opacity: 0; }
+
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -3px; left: 0;
+            width: 0; height: 2px; background: #c0392b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: #c0392b; }
+
+        .toast-box {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #fff; border: 1px solid #22c55e;
+            color: #16a34a; padding: 18px 28px; border-radius: 14px;
+            transform: translateY(120px); opacity: 0;
+            transition: all 0.4s ease; z-index: 9999;
+            font-size: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .toast-box.visible { transform: translateY(0); opacity: 1; }
+
+        .mob-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .mob-menu.open { max-height: 500px; }
+
+        /* Video carousel */
+        .video-carousel {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .video-carousel::-webkit-scrollbar { display: none; }
+        .video-slide {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+
+        .platform-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+        .platform-card:hover { border-color: #c0392b; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+<!-- Toast -->
+<div id="toast" class="toast-box">
+    <div class="flex items-center gap-3">
+        <span class="iconify" data-icon="mdi:check-circle" data-width="22"></span>
+        <span id="toastMsg">Заявка отправлена!</span>
+    </div>
+</div>
+
+<!-- ========== HEADER ========== -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 transition-all duration-300" style="backdrop-filter:blur(16px);border-bottom:1px solid #f0f0f0;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 lg:h-[72px]">
+            <a href="#" class="flex items-center gap-2.5 shrink-0">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center bg-cta">
+                    <span class="text-white font-bold text-base">Э</span>
+                </div>
+                <span class="text-gray-900 font-semibold text-lg tracking-tight">ЭЛАРА</span>
+            </a>
+
+            <nav class="hidden xl:flex items-center gap-6">
+                <a href="#about" class="nav-link text-[13px] text-gray-600 transition-colors">О нас</a>
+                <a href="#paid" class="nav-link text-[13px] text-gray-600 transition-colors">Обучение</a>
+                <a href="#mini" class="nav-link text-[13px] text-gray-600 transition-colors">Мини-курсы</a>
+                <a href="#about" class="nav-link text-[13px] text-gray-600 transition-colors">Преподаватели</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Рекомендуем</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Блог</a>
+                <a href="#faq" class="nav-link text-[13px] text-gray-600 transition-colors">FAQ</a>
+                <a href="#reviews" class="nav-link text-[13px] text-gray-600 transition-colors">Отзывы</a>
+                <a href="#footer" class="nav-link text-[13px] text-gray-600 transition-colors">Контакты</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="https://t.me/your_bot" target="_blank" class="btn-cta px-5 py-2.5 rounded-xl text-sm">
+                    <span class="iconify" data-icon="mdi:robot-outline" data-width="18"></span>
+                    <span class="hidden sm:inline">Написать боту</span>
+                    <span class="sm:hidden">Бот</span>
+                </a>
+                <button id="mobBtn" class="xl:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors">
+                    <span class="iconify" data-icon="mdi:menu" data-width="26" id="mobIcon"></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobMenu" class="mob-menu xl:hidden">
+            <div class="py-4 flex flex-col gap-1 border-t border-gray-100">
+                <a href="#about" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">О нас</a>
+                <a href="#paid" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Обучение</a>
+                <a href="#mini" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Мини-курсы</a>
+                <a href="#about" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Преподаватели</a>
+                <a href="#" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Рекомендуем</a>
+                <a href="#" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Блог</a>
+                <a href="#faq" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">FAQ</a>
+                <a href="#reviews" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Отзывы</a>
+                <a href="#footer" class="mob-link text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Контакты</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="pt-24 pb-16 lg:pt-28 lg:pb-20" style="background:linear-gradient(180deg,#fff 0%,#fafafa 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div class="anim-in">
+                <div class="inline-flex items-center gap-2 badge-free-tag px-4 py-2 rounded-full text-sm font-medium mb-5">
+                    <span class="iconify" data-icon="mdi:gift-outline" data-width="16"></span>
+                    Бесплатный старт
+                </div>
+                <h1 class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-gray-900 leading-tight mb-4">
+                    Эзотерика с <span class="text-cta">Алёной Лаской</span>
+                </h1>
+                <p class="text-gray-500 text-lg mb-8 leading-relaxed max-w-lg">
+                    Выберите бесплатный курс, получите доступ к первым занятиям и начните путь к новым знаниям прямо сейчас.
+                </p>
+
+                <form id="heroForm" class="rounded-2xl p-6 sm:p-8 bg-white" style="border:2px solid #fecaca;box-shadow:0 4px 30px rgba(192,57,43,0.06);">
+                    <h3 class="text-gray-900 font-semibold text-xl mb-1">Регистрация</h3>
+                    <p class="text-gray-400 text-[15px] mb-5">Выберите курс и оставьте контакты</p>
+
+                    <div class="space-y-3 mb-5">
+                        <label class="course-radio selected rounded-xl p-4 flex items-start gap-4">
+                            <input type="radio" name="fc" value="taro" checked class="hidden mt-0.5">
+                            <div class="w-6 h-6 rounded-full border-2 border-cta flex items-center justify-center shrink-0 mt-0.5">
+                                <div class="w-3 h-3 rounded-full bg-cta"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-gray-900 font-medium text-[15px]">Вселенная Таро. Основы</div>
+                                <div class="text-gray-400 text-sm mt-0.5">Путь Дурака и тайны Арканов · 2 занятия</div>
+                            </div>
+                            <span class="badge-free-tag px-2 py-0.5 rounded-md text-xs font-medium shrink-0">Бесплатно</span>
+                        </label>
+                        <label class="course-radio rounded-xl p-4 flex items-start gap-4">
+                            <input type="radio" name="fc" value="omol" class="hidden mt-0.5">
+                            <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <div class="w-3 h-3 rounded-full bg-transparent"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-gray-900 font-medium text-[15px]">Комплексное омоложение после 40</div>
+                                <div class="text-gray-400 text-sm mt-0.5">Сбросьте 10-15 лет на всех уровнях · 3 занятия</div>
+                            </div>
+                            <span class="badge-free-tag px-2 py-0.5 rounded-md text-xs font-medium shrink-0">Бесплатно</span>
+                        </label>
+                        <label class="course-radio rounded-xl p-4 flex items-start gap-4">
+                            <input type="radio" name="fc" value="tarobeg" class="hidden mt-0.5">
+                            <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <div class="w-3 h-3 rounded-full bg-transparent"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-gray-900 font-medium text-[15px]">Таро для начинающих</div>
+                                <div class="text-gray-400 text-sm mt-0.5">Решайте насущные проблемы с помощью Таро · 2 занятия</div>
+                            </div>
+                            <span class="badge-free-tag px-2 py-0.5 rounded-md text-xs font-medium shrink-0">Бесплатно</span>
+                        </label>
+                    </div>
+
+                    <div class="space-y-3 mb-5">
+                        <input type="text" placeholder="Ваше имя" class="form-input w-full px-4 py-3.5 rounded-xl" required>
+                        <input type="tel" placeholder="Телефон или Telegram" class="form-input w-full px-4 py-3.5 rounded-xl" required>
+                        <input type="email" placeholder="Email (необязательно)" class="form-input w-full px-4 py-3.5 rounded-xl">
+                    </div>
+
+                    <button type="submit" class="btn-cta w-full py-4 rounded-xl text-base justify-center">
+                        <span>Получить доступ бесплатно</span>
+                        <span class="iconify" data-icon="mdi:arrow-right" data-width="20"></span>
+                    </button>
+                    <p class="text-gray-400 text-xs text-center mt-3">Нажимая кнопку, вы соглашаетесь с <a href="#" class="underline hover:text-cta transition-colors">политикой конфиденциальности</a></p>
+                </form>
+            </div>
+
+            <div class="anim-in anim-d2 hidden lg:flex justify-center">
+                <div class="relative">
+                    <div class="absolute -top-10 -right-10 w-72 h-72 rounded-full opacity-30" style="background:radial-gradient(circle,rgba(192,57,43,0.15),transparent 70%);"></div>
+                    <div class="absolute -bottom-8 -left-8 w-52 h-52 rounded-full opacity-20" style="background:radial-gradient(circle,rgba(192,57,43,0.1),transparent 70%);"></div>
+                    <div class="relative rounded-3xl overflow-hidden float-slow" style="width:440px;height:560px;border:2px solid #fecaca;">
+                        <img src="https://picsum.photos/seed/elara-expert-face/440/560.jpg" alt="Алёна Лаская" class="w-full h-full object-cover">
+                        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 50%);"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-7">
+                            <div class="text-white font-semibold text-2xl">Алёна Лаская</div>
+                            <div class="text-gray-200 text-[15px] mt-1">Основатель академии Элара</div>
+                            <div class="flex items-center gap-5 mt-4">
+                                <div class="text-sm text-gray-300">
+                                    <span class="text-white font-bold text-xl">11 000+</span> учеников
+                                </div>
+                                <div class="w-px h-5 bg-white/30"></div>
+                                <div class="text-sm text-gray-300">
+                                    <span class="text-white font-bold text-xl">29</span> курсов
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ПЛАТНЫЕ КУРСЫ ========== -->
+<section id="paid" class="section-bg py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 badge-hit px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <span class="iconify" data-icon="mdi:crown" data-width="16"></span>
+                Флагманские
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Платные курсы</h2>
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto">Глубокое погружение в профессию под руководством экспертов академии Элара</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+            <div class="flagship-paid rounded-2xl overflow-hidden group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-full/700/400.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 badge-hit px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:fire" data-width="14"></span> Хит продаж
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-gray-900 font-bold text-xl mb-2">Полный курс «Вселенная Таро»</h3>
+                    <p class="text-gray-500 text-[15px] mb-5 leading-relaxed">Полное погружение в мир Таро: от основ до профессиональных раскладов и трактовок.</p>
+                    <a href="#" class="btn-cta px-6 py-3.5 rounded-xl text-base">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="18"></span></a>
+                </div>
+            </div>
+            <div class="flagship-paid rounded-2xl overflow-hidden group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/candle-mag/700/400.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 badge-hit px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:fire" data-width="14"></span> Хит продаж
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-gray-900 font-bold text-xl mb-2">Полный курс «Мастер свечной магии»</h3>
+                    <p class="text-gray-500 text-[15px] mb-5 leading-relaxed">Научитесь создавать и применять магические свечи для решения любых жизненных задач.</p>
+                    <a href="#" class="btn-cta px-6 py-3.5 rounded-xl text-base">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="18"></span></a>
+                </div>
+            </div>
+            <div class="flagship-paid rounded-2xl overflow-hidden group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/elixir-young/700/400.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 badge-hit px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:fire" data-width="14"></span> Хит продаж
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-gray-900 font-bold text-xl mb-2">Полный курс «Эликсир молодости и красоты»</h3>
+                    <p class="text-gray-500 text-[15px] mb-5 leading-relaxed">Комплексная программа омоложения на физическом, ментальном и энергетическом уровне.</p>
+                    <a href="#" class="btn-cta px-6 py-3.5 rounded-xl text-base">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="18"></span></a>
+                </div>
+            </div>
+            <div class="flagship-paid rounded-2xl overflow-hidden group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/prof-astro/700/400.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 badge-hit px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:fire" data-width="14"></span> Хит продаж
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-gray-900 font-bold text-xl mb-2">Полный курс «Профессия Астролог»</h3>
+                    <p class="text-gray-500 text-[15px] mb-5 leading-relaxed">Станьте профессиональным астрологом: от натальной карты до прогнозирования.</p>
+                    <a href="#" class="btn-cta px-6 py-3.5 rounded-xl text-base">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="18"></span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-gray-700 font-semibold text-xl">Ещё платные курсы</h3>
+            <button class="text-cta text-base font-medium hover:text-cta-dark transition-colors flex items-center gap-1" onclick="togglePaid()">
+                <span id="paidToggleText">Показать все</span>
+                <span class="iconify" data-icon="mdi:chevron-down" data-width="20" id="paidToggleIcon" style="transition:transform 0.3s"></span>
+            </button>
+        </div>
+        <div id="paidGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="course-card rounded-xl p-5">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Коррекционное Таро</h4>
+                <p class="text-gray-500 text-sm mb-4">Полный курс по коррекционной работе с картами Таро</p>
+                <a href="#" class="btn-cta px-5 py-2.5 rounded-lg text-sm">Подробнее</a>
+            </div>
+            <div class="course-card rounded-xl p-5">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Скандинавские руны</h4>
+                <p class="text-gray-500 text-sm mb-4">Мантика, сила и магия скандинавских рун</p>
+                <a href="#" class="btn-cta px-5 py-2.5 rounded-lg text-sm">Подробнее</a>
+            </div>
+            <div class="course-card rounded-xl p-5">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Очистка и защита</h4>
+                <p class="text-gray-500 text-sm mb-4">От негативных программ, сглазов и порч</p>
+                <a href="#" class="btn-cta px-5 py-2.5 rounded-lg text-sm">Подробнее</a>
+            </div>
+            <div class="course-card rounded-xl p-5 paid-extra hidden">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Таро-диагностика негатива</h4>
+                <p class="text-gray-500 text-sm mb-4">Диагностика негативных энерговоздействий с помощью Таро</p>
+                <a href="#" class="btn-cta px-5 py-2.5 rounded-lg text-sm">Подробнее</a>
+            </div>
+            <div class="course-card rounded-xl p-5 paid-extra hidden">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Волшебные карты Ленорман</h4>
+                <p class="text-gray-500 text-sm mb-4">Полный курс по картам Ленорман</p>
+                <a href="#" class="btn-cta px-5 py-2.5 rounded-lg text-sm">Подробнее</a>
+            </div>
+            <div class="course-card rounded-xl p-5 paid-extra hidden">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Карты Симболон</h4>
+                <p class="text-gray-500 text-sm mb-4">Полный курс по картам Симболон</p>
+                <a href="#" class="btn-cta px-5 py-2.5 rounded-lg text-sm">Подробнее</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== БЕСПЛАТНЫЕ КУРСЫ ========== -->
+<section id="free" class="py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 badge-free-tag px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <span class="iconify" data-icon="mdi:star-four-points" data-width="16"></span>
+                Флагманские
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Бесплатные курсы</h2>
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto">Начните с нуля бесплатно. Получите базовые знания и решите, куда двигаться дальше.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-10">
+            <div class="flagship-free rounded-2xl overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-basis/600/380.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 badge-hit px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1">
+                        <span class="iconify" data-icon="mdi:fire" data-width="12"></span> Хит
+                    </div>
+                    <div class="absolute top-4 right-4 badge-free-tag px-2.5 py-1 rounded-lg text-xs font-medium">Бесплатно</div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-gray-900 font-bold text-lg mb-2">Вселенная Таро. Основы</h3>
+                    <p class="text-gray-500 text-sm mb-3 leading-relaxed">Путь Дурака и тайны Арканов</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
+                        <span class="iconify" data-icon="mdi:clock-outline" data-width="16"></span> 2 занятия
+                    </div>
+                    <button class="btn-cta w-full py-3.5 rounded-xl text-base justify-center" onclick="scrollToForm()">Записаться бесплатно</button>
+                </div>
+            </div>
+            <div class="flagship-free rounded-2xl overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/omolog-free/600/380.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 badge-hit px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1">
+                        <span class="iconify" data-icon="mdi:fire" data-width="12"></span> Хит
+                    </div>
+                    <div class="absolute top-4 right-4 badge-free-tag px-2.5 py-1 rounded-lg text-xs font-medium">Бесплатно</div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-gray-900 font-bold text-lg mb-2">Комплексное омоложение после 40</h3>
+                    <p class="text-gray-500 text-sm mb-3 leading-relaxed">Сбросьте 10-15 лет на физическом, ментальном и энергетическом плане</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
+                        <span class="iconify" data-icon="mdi:clock-outline" data-width="16"></span> 3 занятия
+                    </div>
+                    <button class="btn-cta w-full py-3.5 rounded-xl text-base justify-center" onclick="scrollToForm()">Записаться бесплатно</button>
+                </div>
+            </div>
+            <div class="flagship-free rounded-2xl overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-begin/600/380.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 badge-hit px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1">
+                        <span class="iconify" data-icon="mdi:fire" data-width="12"></span> Хит
+                    </div>
+                    <div class="absolute top-4 right-4 badge-free-tag px-2.5 py-1 rounded-lg text-xs font-medium">Бесплатно</div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-gray-900 font-bold text-lg mb-2">Таро для начинающих</h3>
+                    <p class="text-gray-500 text-sm mb-3 leading-relaxed">Решайте насущные проблемы самореализации, роста, дохода</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
+                        <span class="iconify" data-icon="mdi:clock-outline" data-width="16"></span> 2 занятия
+                    </div>
+                    <button class="btn-cta w-full py-3.5 rounded-xl text-base justify-center" onclick="scrollToForm()">Записаться бесплатно</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-gray-700 font-semibold text-xl">Ещё бесплатные курсы</h3>
+            <button class="text-cta text-base font-medium hover:text-cta-dark transition-colors flex items-center gap-1" onclick="toggleFree()">
+                <span id="freeToggleText">Показать все</span>
+                <span class="iconify" data-icon="mdi:chevron-down" data-width="20" id="freeToggleIcon" style="transition:transform 0.3s"></span>
+            </button>
+        </div>
+        <div id="freeGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="course-card rounded-xl p-5">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Магические свечи своими руками</h4>
+                <p class="text-gray-500 text-sm mb-1">Правила создания и применения</p>
+                <div class="text-gray-400 text-xs mt-2">2 занятия</div>
+            </div>
+            <div class="course-card rounded-xl p-5">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Всё о рунах</h4>
+                <p class="text-gray-500 text-sm mb-1">Значения, предсказания и практическое применение</p>
+                <div class="text-gray-400 text-xs mt-2">3 занятия</div>
+            </div>
+            <div class="course-card rounded-xl p-5">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Карты Симболон</h4>
+                <p class="text-gray-500 text-sm mb-1">Ключ к тайнам Души</p>
+                <div class="text-gray-400 text-xs mt-2">1 занятие</div>
+            </div>
+            <div class="course-card rounded-xl p-5 free-extra hidden">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Сглазы и Порчи: миф или реальность?</h4>
+                <p class="text-gray-500 text-sm mb-1">Защита, определение и снятие негативных воздействий</p>
+                <div class="text-gray-400 text-xs mt-2">2 занятия</div>
+            </div>
+            <div class="course-card rounded-xl p-5 free-extra hidden">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Астрология для жизни 3.0</h4>
+                <p class="text-gray-500 text-sm mb-1">Решайте любые жизненные вопросы с помощью Астрологии</p>
+                <div class="text-gray-400 text-xs mt-2">2 занятия</div>
+            </div>
+            <div class="course-card rounded-xl p-5 free-extra hidden">
+                <h4 class="text-gray-900 font-semibold text-base mb-2">Секреты карт Ленорман</h4>
+                <p class="text-gray-500 text-sm mb-1">Практическое применение карт Ленорман</p>
+                <div class="text-gray-400 text-xs mt-2">—</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== МИНИ-КУРСЫ ========== -->
+<section id="mini" class="section-bg py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Мини-курсы</h2>
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto">Короткие курсы по конкретным темам для быстрого результата</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Молодость и красота во сне</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Магия молодости, стройности и красоты</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">ТАРО: энергия молодости</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Хорарная Таро Нумерология</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Масть Кубков: Мир, Любовь и Свет</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">ТАРО: деньги и отношения</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">PRO ДЕНЬГИ</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Создание Артефакта Силы</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Альтернативные гадания</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Посвящение в Кристалл Микао Усуи</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Измени денежную карму</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Благополучие в дом</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Красота женщины</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Магические свечи против простуды</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Быть или не быть</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Амулеты и талисманы</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+            <div class="mini-card rounded-xl p-4 hover:p-5 transition-all">
+                <h4 class="text-gray-900 font-medium text-[15px] mb-3">Магия игральных карт</h4>
+                <a href="#" class="text-cta text-sm font-semibold hover:text-cta-dark transition-colors flex items-center gap-1">Подробнее <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ОБ АКАДЕМИИ ========== -->
+<section id="about" class="py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="relative">
+                <div class="rounded-3xl overflow-hidden" style="border:2px solid #fecaca;">
+                    <img src="https://picsum.photos/seed/elara-academy-about/600/700.jpg" alt="Академия Элара" class="w-full h-[400px] sm:h-[520px] object-cover">
+                </div>
+                <div class="absolute -bottom-5 -right-3 sm:right-6 bg-white rounded-2xl p-5 shadow-lg border border-gray-100">
+                    <div class="text-cta font-bold text-3xl">11 000+</div>
+                    <div class="text-gray-500 text-sm">учеников</div>
+                </div>
+            </div>
+            <div>
+                <div class="inline-flex items-center gap-2 badge-hit px-4 py-2 rounded-full text-sm font-medium mb-6">
+                    <span class="iconify" data-icon="mdi:school" data-width="16"></span>
+                    Об академии
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Академия «Элара»</h2>
+                <p class="text-gray-600 text-[17px] leading-relaxed mb-5">
+                    Академия «Элара» — это международный проект в области эзотерики, астрологии и самопознания.
+                </p>
+                <p class="text-gray-600 text-[17px] leading-relaxed mb-5">
+                    Благодаря уникальным программам обучения и авторским курсам онлайн-академии Элара в процессе обучения вы освоите базовые основы предсказаний будущего на картах Таро и скандинавских рунах, научитесь определять наличие негативных воздействий, сможете их нейтрализовать и ставить защиту, решать любые жизненные задачи с помощью прикладной бытовой магии.
+                </p>
+                <p class="text-gray-600 text-[17px] leading-relaxed mb-8">
+                    У нас практически нет ограничений для обучения — вы можете иметь опыт в эзотерических техниках или начинать с нуля, наши курсы будут полезны для всех.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                    <div class="stat-box rounded-xl p-4 text-center">
+                        <div class="text-cta font-bold text-2xl">10</div>
+                        <div class="text-gray-500 text-sm mt-1">Бесплатных курсов</div>
+                    </div>
+                    <div class="stat-box rounded-xl p-4 text-center">
+                        <div class="text-cta font-bold text-2xl">12</div>
+                        <div class="text-gray-500 text-sm mt-1">Платных курсов</div>
+                    </div>
+                    <div class="stat-box rounded-xl p-4 text-center">
+                        <div class="text-cta font-bold text-2xl">7</div>
+                        <div class="text-gray-500 text-sm mt-1">Преподавателей</div>
+                    </div>
+                    <div class="stat-box rounded-xl p-4 text-center">
+                        <div class="text-cta font-bold text-2xl">11 000+</div>
+                        <div class="text-gray-500 text-sm mt-1">Учеников</div>
+                    </div>
+                </div>
+                <a href="https://t.me/your_bot" target="_blank" class="btn-cta-outline px-6 py-3.5 rounded-xl text-base">
+                    <span class="iconify" data-icon="mdi:telegram" data-width="20"></span>
+                    Написать в Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ОТЗЫВЫ ТЕКСТОВЫЕ ========== -->
+<section id="reviews" class="section-bg py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Отзывы наших учеников</h2>
+            <p class="text-gray-500 text-lg max-w-lg mx-auto">Реальные истории людей, которые уже прошли обучение в академии Элара</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                </div>
+                <p class="text-gray-600 text-[15px] leading-relaxed mb-5">«Прошла курс "Вселенная Таро" — невероятные знания! Теперь уверенно делаю расклады себе и знакомым. Алёна объясняет так просто и понятно.»</p>
+                <div class="flex items-center gap-3">
+                    <img src="https://picsum.photos/seed/rev-elara-1/80/80.jpg" alt="" class="w-11 h-11 rounded-full object-cover">
+                    <div>
+                        <div class="text-gray-900 font-medium text-[15px]">Марина К.</div>
+                        <div class="text-gray-400 text-sm">Курс «Вселенная Таро»</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                </div>
+                <p class="text-gray-600 text-[15px] leading-relaxed mb-5">«Курс омоложения — это чудо! Сбросила 10 лет за 2 месяца. Подруги не верят, что я не делала пластику. Спасибо Алёне за уникальные практики!»</p>
+                <div class="flex items-center gap-3">
+                    <img src="https://picsum.photos/seed/rev-elara-2/80/80.jpg" alt="" class="w-11 h-11 rounded-full object-cover">
+                    <div>
+                        <div class="text-gray-900 font-medium text-[15px]">Татьяна В.</div>
+                        <div class="text-gray-400 text-sm">Курс «Эликсир молодости»</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="18"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star-half-full" data-width="18"></span>
+                </div>
+                <p class="text-gray-600 text-[15px] leading-relaxed mb-5">«Начала с бесплатного курса по рунам и влюбилась. Теперь прохожу полный курс. Наконец-то нашла то, что реально работает!»</p>
+                <div class="flex items-center gap-3">
+                    <img src="https://picsum.photos/seed/rev-elara-3/80/80.jpg" alt="" class="w-11 h-11 rounded-full object-cover">
+                    <div>
+                        <div class="text-gray-900 font-medium text-[15px]">Елена С.</div>
+                        <div class="text-gray-400 text-sm">Курс «Скандинавские руны»</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ВИДЕО-ОТЗЫВЫ (КАРУСЕЛЬ) ========== -->
+<section class="py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Видео-отзывы</h2>
+                <p class="text-gray-500 text-lg">Листайте, чтобы посмотреть все</p>
+            </div>
+            <div class="hidden sm:flex items-center gap-2">
+                <button onclick="scrollCarousel(-1)" class="w-11 h-11 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-400 hover:border-cta hover:text-cta transition-all">
+                    <span class="iconify" data-icon="mdi:chevron-left" data-width="24"></span>
+                </button>
+                <button onclick="scrollCarousel(1)" class="w-11 h-11 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-400 hover:border-cta hover:text-cta transition-all">
+                    <span class="iconify" data-icon="mdi:chevron-right" data-width="24"></span>
+                </button>
+            </div>
+        </div>
+        <div id="videoCarousel" class="video-carousel flex gap-5 pb-4 -mx-4 px-4">
+            <div class="video-slide w-[340px] sm:w-[400px]">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group" onclick="showToast('Вставьте сюда ссылку на видео')">
+                    <div class="w-16 h-16 rounded-full bg-cta/10 flex items-center justify-center mb-3 group-hover:bg-cta/20 transition-colors">
+                        <span class="iconify text-cta" data-icon="mdi:play" data-width="32"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm px-4 text-center">Марина о курсе «Вселенная Таро»</p>
+                </div>
+            </div>
+            <div class="video-slide w-[340px] sm:w-[400px]">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group" onclick="showToast('Вставьте сюда ссылку на видео')">
+                    <div class="w-16 h-16 rounded-full bg-cta/10 flex items-center justify-center mb-3 group-hover:bg-cta/20 transition-colors">
+                        <span class="iconify text-cta" data-icon="mdi:play" data-width="32"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm px-4 text-center">Татьяна об «Эликсире молодости»</p>
+                </div>
+            </div>
+            <div class="video-slide w-[340px] sm:w-[400px]">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group" onclick="showToast('Вставьте сюда ссылку на видео')">
+                    <div class="w-16 h-16 rounded-full bg-cta/10 flex items-center justify-center mb-3 group-hover:bg-cta/20 transition-colors">
+                        <span class="iconify text-cta" data-icon="mdi:play" data-width="32"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm px-4 text-center">Елена о скандинавских рунах</p>
+                </div>
+            </div>
+            <div class="video-slide w-[340px] sm:w-[400px]">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group" onclick="showToast('Вставьте сюда ссылку на видео')">
+                    <div class="w-16 h-16 rounded-full bg-cta/10 flex items-center justify-center mb-3 group-hover:bg-cta/20 transition-colors">
+                        <span class="iconify text-cta" data-icon="mdi:play" data-width="32"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm px-4 text-center">Ольга о свечной магии</p>
+                </div>
+            </div>
+            <div class="video-slide w-[340px] sm:w-[400px]">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group" onclick="showToast('Вставьте сюда ссылку на видео')">
+                    <div class="w-16 h-16 rounded-full bg-cta/10 flex items-center justify-center mb-3 group-hover:bg-cta/20 transition-colors">
+                        <span class="iconify text-cta" data-icon="mdi:play" data-width="32"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm px-4 text-center">Наталья об астрологии</p>
+                </div>
+            </div>
+            <div class="video-slide w-[340px] sm:w-[400px]">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group" onclick="showToast('Вставьте сюда ссылку на видео')">
+                    <div class="w-16 h-16 rounded-full bg-cta/10 flex items-center justify-center mb-3 group-hover:bg-cta/20 transition-colors">
+                        <span class="iconify text-cta" data-icon="mdi:play" data-width="32"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm px-4 text-center">Ирина о картах Ленорман</p>
+                </div>
+            </div>
+            <div class="video-slide w-[340px] sm:w-[400px]">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group" onclick="showToast('Вставьте сюда ссылку на видео')">
+                    <div class="w-16 h-16 rounded-full bg-cta/10 flex items-center justify-center mb-3 group-hover:bg-cta/20 transition-colors">
+                        <span class="iconify text-cta" data-icon="mdi:play" data-width="32"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm px-4 text-center">Светлана о чистке и защите</p>
+                </div>
+            </div>
+            <div class="video-slide w-[340px] sm:w-[400px]">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 aspect-video flex flex-col items-center justify-center cursor-pointer group" onclick="showToast('Вставьте сюда ссылку на видео')">
+                    <div class="w-16 h-16 rounded-full bg-cta/10 flex items-center justify-center mb-3 group-hover:bg-cta/20 transition-colors">
+                        <span class="iconify text-cta" data-icon="mdi:play" data-width="32"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm px-4 text-center">Галина о Симболон</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ОТЗЫВЫ НА ПЛАТФОРМАХ ========== -->
+<section class="section-bg py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Нас рекомендуют</h2>
+            <p class="text-gray-500 text-lg max-w-lg mx-auto">Отзывы на независимых площадках — честно и объективно</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="#" target="_blank" class="platform-card rounded-2xl p-6 block">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
+                        <span class="iconify text-blue-500" data-icon="mdi:star-circle" data-width="28"></span>
+                    </div>
+                    <div>
+                        <div class="text-gray-900 font-semibold text-[15px]">CourseLab</div>
+                        <div class="text-gray-400 text-sm">Агрегатор курсов</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 mb-3">
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="text-gray-500 text-sm ml-2">4.9 из 5</span>
+                </div>
+                <p class="text-gray-400 text-sm font-medium">47 отзывов →</p>
+            </a>
+            <a href="#" target="_blank" class="platform-card rounded-2xl p-6 block">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center">
+                        <span class="iconify text-purple-500" data-icon="mdi:comment-text-multiple" data-width="28"></span>
+                    </div>
+                    <div>
+                        <div class="text-gray-900 font-semibold text-[15px]">Фрилансим</div>
+                        <div class="text-gray-400 text-sm">Образовательная платформа</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 mb-3">
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star-half-full" data-width="16"></span>
+                    <span class="text-gray-500 text-sm ml-2">4.7 из 5</span>
+                </div>
+                <p class="text-gray-400 text-sm font-medium">32 отзыва →</p>
+            </a>
+            <a href="#" target="_blank" class="platform-card rounded-2xl p-6 block">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center">
+                        <span class="iconify text-orange-500" data-icon="mdi:star-shooting" data-width="28"></span>
+                    </div>
+                    <div>
+                        <div class="text-gray-900 font-semibold text-[15px]">Яндекс.Курсы</div>
+                        <div class="text-gray-400 text-sm">Каталог образования</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 mb-3">
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="iconify text-cta" data-icon="mdi:star" data-width="16"></span>
+                    <span class="text-gray-500 text-sm ml-2">5.0 из 5</span>
+                </div>
+                <p class="text-gray-400 text-sm font-medium">18 отзывов →</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq" class="py-16 sm:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Частые вопросы</h2>
+            <p class="text-gray-500 text-lg">Ответы на самые популярные вопросы учеников</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="faq-item py-5 px-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex items-center justify-between gap-4">
+                    <span class="text-gray-900 font-medium text-base sm:text-lg">Как получить доступ к бесплатному курсу?</span>
+                    <span class="iconify faq-chevron text-gray-400 shrink-0" data-icon="mdi:chevron-down" data-width="24"></span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-500 text-[15px] leading-relaxed pt-4">Заполните форму регистрации на главной странице, выберите интересующий курс и нажмите «Получить доступ бесплатно». Данные для входа придут на указанный email или в Telegram.</p>
+                </div>
+            </div>
+            <div class="faq-item py-5 px-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex items-center justify-between gap-4">
+                    <span class="text-gray-900 font-medium text-base sm:text-lg">Нужен ли опыт для начала обучения?</span>
+                    <span class="iconify faq-chevron text-gray-400 shrink-0" data-icon="mdi:chevron-down" data-width="24"></span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-500 text-[15px] leading-relaxed pt-4">Нет, наши курсы подойдут как для абсолютных новичков, так и для тех, кто уже имеет опыт в эзотерике. Программы построены от простого к сложному.</p>
+                </div>
+            </div>
+            <div class="faq-item py-5 px-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex items-center justify-between gap-4">
+                    <span class="text-gray-900 font-medium text-base sm:text-lg">Чем отличаются бесплатные курсы от платных?</span>
+                    <span class="iconify faq-chevron text-gray-400 shrink-0" data-icon="mdi:chevron-down" data-width="24"></span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-500 text-[15px] leading-relaxed pt-4">Бесплатные курсы содержат базовые занятия для знакомства с темой. Платные — это полное погружение с практикой, обратной связью от наставника и сертификатом.</p>
+                </div>
+            </div>
+            <div class="faq-item py-5 px-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex items-center justify-between gap-4">
+                    <span class="text-gray-900 font-medium text-base sm:text-lg">Как долго доступен платный курс?</span>
+                    <span class="iconify faq-chevron text-gray-400 shrink-0" data-icon="mdi:chevron-down" data-width="24"></span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-500 text-[15px] leading-relaxed pt-4">Доступ к платным курсам остаётся навсегда. Вы можете возвращаться к материалам в любое время и учиться в своём темпе.</p>
+                </div>
+            </div>
+            <div class="faq-item py-5 px-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex items-center justify-between gap-4">
+                    <span class="text-gray-900 font-medium text-base sm:text-lg">Есть ли возврат средств?</span>
+                    <span class="iconify faq-chevron text-gray-400 shrink-0" data-icon="mdi:chevron-down" data-width="24"></span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-500 text-[15px] leading-relaxed pt-4">Да, в течение 7 дней после покупки вы можете вернуть полную стоимость, если курс вам не подошёл.</p>
+                </div>
+            </div>
+            <div class="faq-item py-5 px-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex items-center justify-between gap-4">
+                    <span class="text-gray-900 font-medium text-base sm:text-lg">Как связаться с поддержкой?</span>
+                    <span class="iconify faq-chevron text-gray-400 shrink-0" data-icon="mdi:chevron-down" data-width="24"></span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-500 text-[15px] leading-relaxed pt-4">Напишите нашему боту в Telegram — это самый быстрый способ. Также можно позвонить по телефону +7 (926) 710-83-06 или написать на info@elaraakademia.ru.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ФИНАЛЬНЫЙ CTA ========== -->
+<section class="section-bg py-16 sm:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="bg-white rounded-3xl p-10 sm:p-16 relative overflow-hidden border-2 border-cta/20 shadow-sm">
+            <div class="absolute top-0 right-0 w-80 h-80 rounded-full opacity-30" style="background:radial-gradient(circle,rgba(192,57,43,0.1),transparent 70%);transform:translate(30%,-30%);"></div>
+            <div class="relative">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Готовы начать?</h2>
+                <p class="text-gray-500 text-lg max-w-lg mx-auto mb-8">Выберите бесплатный курс и сделайте первый шаг уже сегодня. Никаких рисков — только польза.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button class="btn-cta px-8 py-4 rounded-xl text-base" onclick="scrollToForm()">
+                        <span class="iconify" data-icon="mdi:gift-outline" data-width="22"></span>
+                        Выбрать бесплатный курс
+                    </button>
+                    <a href="https://t.me/your_bot" target="_blank" class="btn-cta-outline px-8 py-4 rounded-xl text-base">
+                        <span class="iconify" data-icon="mdi:robot-outline" data-width="22"></span>
+                        Спросить у бота
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer id="footer" class="py-14 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+            <div>
+                <div class="flex items-center gap-2.5 mb-4">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-cta">
+                        <span class="text-white font-bold text-sm">Э</span>
+                    </div>
+                    <span class="text-white font-semibold text-lg">ЭЛАРА</span>
+                </div>
+                <p class="text-gray-400 text-[15px] leading-relaxed mb-5">Международный проект в области эзотерики, астрологии и самопознания.</p>
+                <div class="text-gray-400 text-sm mb-1.5 flex items-center gap-2">
+                    <span class="iconify" data-icon="mdi:phone" data-width="16"></span>
+                    +7 (926) 710-83-06
+                </div>
+                <div class="text-gray-400 text-sm flex items-center gap-2">
+                    <span class="iconify" data-icon="mdi:email-outline" data-width="16"></span>
+                    info@elaraakademia.ru
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Курсы</h4>
+                <div class="space-y-2.5">
+                    <a href="#free" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Бесплатные курсы</a>
+                    <a href="#paid" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Платные курсы</a>
+                    <a href="#mini" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Мини-курсы</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Информация</h4>
+                <div class="space-y-2.5">
+                    <a href="#about" class="block text-gray-400 text-[15px] hover:text-white transition-colors">О нас</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Преподаватели</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Блог</a>
+                    <a href="#reviews" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Отзывы</a>
+                    <a href="#faq" class="block text-gray-400 text-[15px] hover:text-white transition-colors">FAQ</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Мы в соцсетях</h4>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all" title="ВКонтакте">
+                        <span class="iconify" data-icon="mdi:vk" data-width="28" style="color:#0077FF"></span>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all" title="Telegram">
+                        <span class="iconify" data-icon="mdi:telegram" data-width="28" style="color:#26A5E4"></span>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all" title="YouTube">
+                        <span class="iconify" data-icon="mdi:youtube" data-width="28" style="color:#FF0000"></span>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all" title="Instagram">
+                        <span class="iconify" data-icon="mdi:instagram" data-width="28" style="color:#E1306C"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-500 text-sm">© 2025 Академия Элара. Все права защищены.</p>
+            <div class="flex items-center gap-5 flex-wrap justify-center">
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Политика конфиденциальности</a>
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Пользовательское соглашение</a>
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Публичная оферта</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    const mobBtn = document.getElementById('mobBtn');
+    const mobMenu = document.getElementById('mobMenu');
+    const mobIcon = document.getElementById('mobIcon');
+    let mobOpen = false;
+    mobBtn.addEventListener('click', () => {
+        mobOpen = !mobOpen;
+        mobMenu.classList.toggle('open', mobOpen);
+        mobIcon.setAttribute('data-icon', mobOpen ? 'mdi:close' : 'mdi:menu');
+    });
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+        mobOpen = false; mobMenu.classList.remove('open');
+        mobIcon.setAttribute('data-icon', 'mdi:menu');
+    }));
+
+    // Course radio
+    document.querySelectorAll('.course-radio').forEach(opt => {
+        opt.addEventListener('click', () => {
+            document.querySelectorAll('.course-radio').forEach(o => {
+                o.classList.remove('selected');
+                const d = o.querySelector('.w-6 .w-3');
+                const c = o.querySelector('.w-6');
+                if(d) d.style.background = 'transparent';
+                if(c) c.style.borderColor = '#d4d4d4';
+            });
+            opt.classList.add('selected');
+            const d = opt.querySelector('.w-6 .w-3');
+            const c = opt.querySelector('.w-6');
+            if(d) d.style.background = '#c0392b';
+            if(c) c.style.borderColor = '#c0392b';
+        });
+    });
+
+    // Form
+    document.getElementById('heroForm').addEventListener('submit', e => {
+        e.preventDefault();
+        showToast('Заявка отправлена! Проверьте почту или Telegram.');
+        e.target.reset();
+        const first = document.querySelector('.course-radio');
+        first.classList.add('selected');
+        const d = first.querySelector('.w-6 .w-3');
+        const c = first.querySelector('.w-6');
+        if(d) d.style.background = '#c0392b';
+        if(c) c.style.borderColor = '#c0392b';
+    });
+
+    function showToast(t) {
+        const el = document.getElementById('toast');
+        document.getElementById('toastMsg').textContent = t;
+        el.classList.add('visible');
+        setTimeout(() => el.classList.remove('visible'), 4000);
+    }
+
+    function scrollToForm() {
+        document.getElementById('heroForm').scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+
+    let freeExp = false;
+    function toggleFree() {
+        freeExp = !freeExp;
+        document.querySelectorAll('.free-extra').forEach(e => e.classList.toggle('hidden', !freeExp));
+        document.getElementById('freeToggleText').textContent = freeExp ? 'Свернуть' : 'Показать все';
+        document.getElementById('freeToggleIcon').style.transform = freeExp ? 'rotate(180deg)' : '';
+    }
+
+    let paidExp = false;
+    function togglePaid() {
+        paidExp = !paidExp;
+        document.querySelectorAll('.paid-extra').forEach(e => e.classList.toggle('hidden', !paidExp));
+        document.getElementById('paidToggleText').textContent = paidExp ? 'Свернуть' : 'Показать все';
+        document.getElementById('paidToggleIcon').style.transform = paidExp ? 'rotate(180deg)' : '';
+    }
+
+    function toggleFaq(item) {
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+    }
+
+    // Video carousel scroll
+    function scrollCarousel(dir) {
+        const c = document.getElementById('videoCarousel');
+        const w = c.querySelector('.video-slide').offsetWidth + 20; // card width + gap
+        c.scrollBy({ left: dir * w, behavior: 'smooth' });
+    }
+
+    // Header scroll
+    window.addEventListener('scroll', () => {
+        const h = document.getElementById('header');
+        if (window.scrollY > 50) {
+            h.style.boxShadow = '0 1px 12px rgba(0,0,0,0.06)';
+            h.style.background = 'rgba(255,255,255,0.98)';
+        } else {
+            h.style.boxShadow = 'none';
+            h.style.background = 'rgba(255,255,255,0.95)';
+        }
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            const t = document.querySelector(this.getAttribute('href'));
+            if(t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+        });
+    });
+</script>
+</body>
+</html>

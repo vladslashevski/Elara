@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гадание на оракуле Симболон: расклады на отношения, здоровье, ситуацию — Академия Элара</title>
+    <meta name="description" content="Гадание на картах Симболон — способ глубже понять свои внутренние состояния, мотивы и отношения. Схемы раскладов и толкования.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cta: { DEFAULT:'#c0392b', hover:'#a93226', light:'#fef2f2', dark:'#922b21' },
+                    },
+                    fontFamily: { sans:['Inter','sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:16px;line-height:1.6}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:#f5f5f5}
+        ::-webkit-scrollbar-thumb{background:#d4d4d4;border-radius:4px}
+
+        .nav-link{position:relative}
+        .nav-link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:#c0392b;transition:width .3s}
+        .nav-link:hover::after{width:100%}
+        .nav-link:hover{color:#c0392b}
+
+        .btn-cta{background:#c0392b;color:#fff;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+        .btn-cta:hover{background:#a93226;box-shadow:0 4px 16px rgba(192,57,43,.3);transform:translateY(-1px)}
+        .btn-cta-outline{border:2px solid #c0392b;color:#c0392b;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+        .btn-cta-outline:hover{background:#c0392b;color:#fff}
+        .btn-gold{background:linear-gradient(135deg,#c9a84c,#a88a3a);color:#fff;font-weight:700;transition:all .3s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+        .btn-gold:hover{background:linear-gradient(135deg,#e0c068,#c9a84c);box-shadow:0 4px 16px rgba(201,168,76,.3);transform:translateY(-1px)}
+
+        .cat-pill{transition:all .25s;cursor:pointer;white-space:nowrap}
+        .cat-pill:hover{border-color:#c0392b;color:#c0392b;background:#fef2f2}
+        .cat-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+        .cat-scroll::-webkit-scrollbar{display:none}
+
+        /* Article content styling */
+        .article-body h2{font-size:1.5rem;font-weight:700;color:#1a1a1a;margin:2rem 0 1rem;padding-bottom:.5rem;border-bottom:2px solid #fef2f2}
+        .article-body h3{font-size:1.2rem;font-weight:600;color:#1a1a1a;margin:1.5rem 0 .75rem}
+        .article-body p{color:#404040;margin-bottom:1.25rem;line-height:1.75}
+        .article-body ul,.article-body ol{color:#404040;margin-bottom:1.25rem;padding-left:1.5rem;line-height:1.75}
+        .article-body li{margin-bottom:.5rem}
+        .article-body img{border-radius:1rem;margin:1.5rem 0;width:100%;object-fit:cover}
+        .article-body blockquote{border-left:4px solid #c0392b;background:#fef2f2;padding:1.25rem 1.5rem;border-radius:0 1rem 1rem 0;margin:1.5rem 0;font-style:italic;color:#525252}
+        .article-body strong{color:#1a1a1a;font-weight:600}
+
+        /* CTA blocks in article */
+        .cta-inline{background:linear-gradient(135deg,#fef2f2,#fff);border:2px solid #fecaca;border-radius:1.25rem;padding:1.5rem 2rem;margin:2rem 0;position:relative;overflow:hidden}
+        .cta-inline::before{content:'';position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(192,57,43,.06)}
+        .cta-inline::after{content:'';position:absolute;bottom:-30px;left:-10px;width:80px;height:80px;border-radius:50%;background:rgba(192,57,43,.04)}
+
+        /* Course sidebar card */
+        .course-side-card{border:2px solid #c0392b;border-radius:1.25rem;overflow:hidden;transition:all .3s;position:relative}
+        .course-side-card::before{content:'РЕКОМЕНДУЕМ';position:absolute;top:12px;right:-28px;background:#c0392b;color:#fff;font-size:10px;font-weight:700;padding:4px 32px;transform:rotate(45deg);letter-spacing:1px;z-index:2}
+        .course-side-card:hover{box-shadow:0 8px 30px rgba(192,57,43,.12);transform:translateY(-3px)}
+
+        .related-card{border:1px solid #e5e5e5;transition:all .3s;border-radius:1rem;overflow:hidden}
+        .related-card:hover{border-color:#c0392b;box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-2px)}
+        .related-card:hover img{transform:scale(1.05)}
+        .related-card img{transition:transform .5s}
+
+        /* Sticky sidebar on desktop */
+        @media(min-width:1024px){
+            .sticky-side{position:sticky;top:96px}
+        }
+
+        .toast-box{position:fixed;bottom:30px;right:30px;background:#fff;border:1px solid #22c55e;color:#16a34a;padding:18px 28px;border-radius:14px;transform:translateY(120px);opacity:0;transition:all .4s;z-index:9999;font-size:15px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+        .toast-box.visible{transform:translateY(0);opacity:1}
+
+        .mob-menu{max-height:0;overflow:hidden;transition:max-height .4s}
+        .mob-menu.open{max-height:500px}
+
+        /* Reading progress bar */
+        #progressBar{position:fixed;top:0;left:0;height:3px;background:#c0392b;z-index:100;transition:width .1s linear;width:0}
+    </style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<div id="toast" class="toast-box"><div class="flex items-center gap-3"><span class="iconify" data-icon="mdi:check-circle" data-width="22"></span><span id="toastMsg">OK</span></div></div>
+
+<!-- HEADER -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 transition-all duration-300" style="backdrop-filter:blur(16px);border-bottom:1px solid #f0f0f0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 lg:h-[72px]">
+            <a href="#" class="flex items-center gap-2.5 shrink-0">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center bg-cta"><span class="text-white font-bold text-base">Э</span></div>
+                <span class="text-gray-900 font-semibold text-lg tracking-tight">ЭЛАРА</span>
+            </a>
+            <nav class="hidden xl:flex items-center gap-6">
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">О нас</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Обучение</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Мини-курсы</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Преподаватели</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Рекомендуем</a>
+                <a href="#" class="nav-link text-[13px] text-cta font-medium transition-colors">Блог</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">FAQ</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Отзывы</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Контакты</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="https://t.me/your_bot" target="_blank" class="btn-cta px-5 py-2.5 rounded-xl text-sm"><span class="iconify" data-icon="mdi:robot-outline" data-width="18"></span><span class="hidden sm:inline">Написать боту</span><span class="sm:hidden">Бот</span></a>
+                <button id="mobBtn" class="xl:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors"><span class="iconify" data-icon="mdi:menu" data-width="26" id="mobIcon"></span></button>
+            </div>
+        </div>
+        <div id="mobMenu" class="mob-menu xl:hidden">
+            <div class="py-4 flex flex-col gap-1 border-t border-gray-100">
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">О нас</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Обучение</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Мини-курсы</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Преподаватели</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Рекомендуем</a>
+                <a href="#" class="text-cta bg-cta-light px-3 py-2.5 rounded-lg text-[15px] font-medium">Блог</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">FAQ</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Отзывы</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Контакты</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="pt-20 lg:pt-[88px] bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+        <div class="flex items-center gap-2 text-sm flex-wrap">
+            <a href="#" class="text-gray-400 hover:text-cta transition-colors">Главная</a>
+            <span class="iconify text-gray-300" data-icon="mdi:chevron-right" data-width="16"></span>
+            <a href="#" class="text-gray-400 hover:text-cta transition-colors">Блог</a>
+            <span class="iconify text-gray-300" data-icon="mdi:chevron-right" data-width="16"></span>
+            <span class="text-gray-400 hover:text-cta transition-colors">Симболон</span>
+            <span class="iconify text-gray-300" data-icon="mdi:chevron-right" data-width="16"></span>
+            <span class="text-gray-700 font-medium">Гадание на картах Симболон</span>
+        </div>
+    </div>
+</div>
+
+<!-- КАТЕГОРИИ (горизонтальные) -->
+<div class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+        <div class="cat-scroll flex gap-2 -mx-4 px-4">
+            <a href="#" class="cat-pill flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-500 hover:border-cta hover:text-cta hover:bg-cta-light transition-all">
+                <span class="iconify" data-icon="mdi:cards" data-width="14"></span> Таро
+            </a>
+            <a href="#" class="cat-pill flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-500 hover:border-cta hover:text-cta hover:bg-cta-light transition-all">
+                <span class="iconify" data-icon="mdi:grid" data-width="14"></span> Схемы раскладов
+            </a>
+            <a href="#" class="cat-pill flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-500 hover:border-cta hover:text-cta hover:bg-cta-light transition-all">
+                <span class="iconify" data-icon="mdi:eye-outline" data-width="14"></span> Симболон
+            </a>
+            <a href="#" class="cat-pill flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-500 hover:border-cta hover:text-cta hover:bg-cta-light transition-all">
+                <span class="iconify" data-icon="mdi:diamond-stone" data-width="14"></span> Руны
+            </a>
+            <a href="#" class="cat-pill flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-500 hover:border-cta hover:text-cta hover:bg-cta-light transition-all">
+                <span class="iconify" data-icon="mdi:vector-polyline" data-width="14"></span> Рунические ставы
+            </a>
+            <a href="#" class="cat-pill flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-500 hover:border-cta hover:text-cta hover:bg-cta-light transition-all">
+                <span class="iconify" data-icon="mdi:candle" data-width="14"></span> Свечи
+            </a>
+            <a href="#" class="cat-pill flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-500 hover:border-cta hover:text-cta hover:bg-cta-light transition-all">
+                <span class="iconify" data-icon="mdi:fire" data-width="14"></span> Ритуалы
+            </a>
+            <a href="#" class="cat-pill flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-500 hover:border-cta hover:text-cta hover:bg-cta-light transition-all">
+                <span class="iconify" data-icon="mdi:home-astro" data-width="14"></span> Астрология
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ARTICLE LAYOUT -->
+<section class="py-8 sm:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-[1fr_340px] gap-8 lg:gap-12">
+
+            <!-- LEFT: Article -->
+            <article>
+                <!-- Article header -->
+                <header class="mb-8">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2.5 py-1 rounded-md">Симболон</span>
+                        <span class="text-gray-400 text-xs">28 октября 2025</span>
+                        <span class="text-gray-300 text-xs">·</span>
+                        <span class="text-gray-400 text-xs">8 мин чтения</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-5">
+                        Гадание на оракуле Симболон: на отношения, здоровье, ситуацию
+                    </h1>
+                    <div class="flex items-center gap-3 pb-6 border-b border-gray-100">
+                        <img src="https://picsum.photos/seed/anna-andreeva/80/80.jpg" alt="Анна Андреева" class="w-11 h-11 rounded-full object-cover">
+                        <div>
+                            <div class="text-gray-900 font-medium text-[15px]">Анна Андреева</div>
+                            <div class="text-gray-400 text-xs">Преподаватель академии Элара</div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Hero image -->
+                <div class="rounded-2xl overflow-hidden mb-8">
+                    <img src="https://picsum.photos/seed/simbolon-hero/900/500.jpg" alt="Гадание на картах Симболон" class="w-full h-[280px] sm:h-[400px] object-cover">
+                </div>
+
+                <!-- Article body -->
+                <div class="article-body">
+
+                    <p>Гадание на оракуле Симболон — это способ глубже понять свои внутренние состояния, мотивы и отношения с окружающими. Карты Симболон, созданные художником Урсулой Картнер, отличаются от классических Таро тем, что каждый символ на них несёт прямое послание от подсознания.</p>
+
+                    <h2>Что такое карты Симболон?</h2>
+
+                    <p>Оракул Симболон состоит из <strong>40 карт</strong>, каждая из которых изображает определённый символ с соответствующим номером. В отличие от Таро, здесь нет мастей, арканов и сложных систем соответствий. Каждая карта — это <strong>самостоятельное послание</strong>, которое можно трактовать как отдельно, так и в сочетании с другими картами.</p>
+
+                    <blockquote>Симболон не предсказывает будущее — он отражает то, что уже есть в вашем подсознании, но ещё не осознано.</blockquote>
+
+                    <img src="https://picsum.photos/seed/simbolon-cards-spread/900/450.jpg" alt="Карты Симболон расклад">
+
+                    <h2>Как подготовиться к гаданию</h2>
+
+                    <p>Перед тем как начать расклад, важно правильно настроиться. Вот основные правила подготовки:</p>
+
+                    <ul>
+                        <li>Найдите тихое место, где вас никто не побеспокоит</li>
+                        <li>Сформулируйте чёткий вопрос — чем точнее вопрос, тем точнее ответ</li>
+                        <li>Перемешайте колоду, думая о своём вопросе</li>
+                        <li>Достаньте нужное количество карт из колоды</li>
+                    </ul>
+
+                    <!-- ===== CTA #1: ВСТРОЕННЫЙ (после инструкции) ===== -->
+                    <div class="cta-inline">
+                        <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cta/10 flex items-center justify-center shrink-0">
+                                <span class="iconify text-cta" data-icon="mdi:school-outline" data-width="24"></span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-gray-900 font-bold text-base mb-1">Хотите научиться гадать профессионально?</div>
+                                <p class="text-gray-500 text-sm mb-3">На нашем курсе «Карты Симболон» вы освоите все расклады и научитесь точным трактовкам.</p>
+                                <a href="#" class="btn-cta px-5 py-2.5 rounded-xl text-sm">
+                                    Подробнее о курсе <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Расклад «Что у него на уме»</h2>
+
+                    <p>Один из самых популярных раскладов на картах Симболон — это расклад на отношения. Он помогает понять истинные чувства и намерения партнёра.</p>
+
+                    <h3>Положение карт:</h3>
+
+                    <ol>
+                        <li><strong>Карта 1</strong> — Что он чувствует к вам прямо сейчас</li>
+                        <li><strong>Карта 2</strong> — О чём он думает</li>
+                        <li><strong>Карта 3</strong> — Какие скрытые мотивы у него есть</li>
+                        <li><strong>Карта 4</strong> — Как развиваются события</li>
+                        <li><strong>Карта 5</strong> — Какой совет дают карты</li>
+                    </ol>
+
+                    <img src="https://picsum.photos/seed/simbolon-spread-layout/900/400.jpg" alt="Схема расклада Что у него на уме">
+
+                    <h2>Расклад на здоровье</h2>
+
+                    <p>Карты Симболон можно использовать для анализа состояния здоровья — как физического, так и эмоционального. Этот расклад не заменяет консультацию врача, но помогает выявить <strong>психосоматические причины</strong> недомоганий.</p>
+
+                    <h3>Схема расклада на здоровье:</h3>
+
+                    <ol>
+                        <li><strong>Карта 1</strong> — Общее состояние энергетики</li>
+                        <li><strong>Карта 2</strong> — В какой области возможны проблемы</li>
+                        <li><strong>Карта 3</strong> — Эмоциональное состояние, влияющее на здоровье</li>
+                        <li><strong>Карта 4</strong> — Что нужно изменить для улучшения</li>
+                    </ol>
+
+                    <!-- ===== CTA #2: ВСТРОЕННЫЙ (середина статьи) ===== -->
+                    <div class="cta-inline">
+                        <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cta/10 flex items-center justify-center shrink-0">
+                                <span class="iconify text-cta" data-icon="mdi:gift-outline" data-width="24"></span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-gray-900 font-bold text-base mb-1">Попробуйте бесплатно!</div>
+                                <p class="text-gray-500 text-sm mb-3">Бесплатный мини-курс по Симболону — 1 занятие, чтобы понять, подходит ли вам этот оракул.</p>
+                                <a href="#" class="btn-cta px-5 py-2.5 rounded-xl text-sm">
+                                    Записаться бесплатно <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Расклад на конкретную ситуацию</h2>
+
+                    <p>Когда нужно принять решение или понять развитие конкретной ситуации, используйте этот универсальный расклад. Он подходит для любых жизненных вопросов — работа, переезд, покупка, отношения.</p>
+
+                    <h3>Порядок расклада:</h3>
+
+                    <ol>
+                        <li><strong>Карта 1</strong> — Суть ситуации</li>
+                        <li><strong>Карта 2</strong> — Что работает в вашу пользу</li>
+                        <li><strong>Карта 3</strong> — Что работает против вас</li>
+                        <li><strong>Карта 4</strong> — Развитие ситуации, если ничего не менять</li>
+                        <li><strong>Карта 5</strong> — Развитие ситуации, если действовать</li>
+                        <li><strong>Карта 6</strong> — Итог и совет</li>
+                    </ol>
+
+                    <img src="https://picsum.photos/seed/simbolon-situation/900/450.jpg" alt="Расклад на ситуацию">
+
+                    <blockquote>Главное правило Симболона — доверяйте первой ассоциации, которая приходит при взгляде на карту. Именно она является верным ключом к трактовке.</blockquote>
+
+                    <h2>Тонкости трактовки карт Симболон</h2>
+
+                    <p>В отличие от Таро, где каждая карта имеет множество значений в зависимости от позиции и сочетаний, карты Симболон <strong>более прямолинейны</strong>. Однако есть важные нюансы:</p>
+
+                    <ul>
+                        <li><strong>Положительная карта в негативной позиции</strong> — символизирует то, что нужно отпустить или чрезмерное увлечение</li>
+                        <li><strong>Негативная карта рядом с позитивной</strong> — указывает на препятствие или предупреждение</li>
+                        <li><strong>Две одинаковые карты</strong> — усиление значения, важность послания</li>
+                        <li><strong>Нумерологическое значение</strong> — номер карты добавляет слой интерпретации</li>
+                    </ul>
+
+                    <!-- ===== CTA #3: ВСТРОЕННЫЙ (перед концом) ===== -->
+                    <div class="cta-inline">
+                        <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cta/10 flex items-center justify-center shrink-0">
+                                <span class="iconify text-cta" data-icon="mdi:account-group-outline" data-width="24"></span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-gray-900 font-bold text-base mb-1">Уже 510 учеников прошли курс</div>
+                                <p class="text-gray-500 text-sm mb-3">Присоединяйтесь к тем, кто уже научился профессионально работать с Симболоном.</p>
+                                <a href="#" class="btn-cta px-5 py-2.5 rounded-xl text-sm">
+                                    Смотреть программу курса <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Заключение</h2>
+
+                    <p>Гадание на оракуле Симболон — это мощный инструмент самопознания, который доступен даже новичкам. Главное — регулярная практика и доверие своей интуиции. Начните с простых раскладов на одну-две карты и постепенно переходите к более сложным схемам.</p>
+
+                    <p>Если вы хотите изучить Симболон глубоко и системно, приглашаем вас на наш курс, где мы разберём каждую из 40 карт и все основные расклады.</p>
+
+                    <!-- ===== CTA #4: ФИНАЛЬНЫЙ БОЛЬШОЙ ===== -->
+                    <div class="bg-gradient-to-br from-cta-light to-white rounded-2xl p-6 sm:p-8 mt-8" style="border:2px solid #fecaca">
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-cta/10 flex items-center justify-center mx-auto mb-4">
+                                <span class="iconify text-cta" data-icon="mdi:cards-playing-outline" data-width="32"></span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Освойте карты Симболон</h3>
+                            <p class="text-gray-500 text-[15px] mb-6 max-w-md mx-auto">Бесплатное занятие + возможность продолжить обучение на полном курсе с обратной связью от наставника</p>
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                                <a href="#" class="btn-cta px-7 py-3.5 rounded-xl text-base">
+                                    <span class="iconify" data-icon="mdi:gift-outline" data-width="20"></span>
+                                    Начать бесплатно
+                                </a>
+                                <a href="#" class="btn-cta-outline px-7 py-3.5 rounded-xl text-base">
+                                    Программа курса
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Tags -->
+                <div class="flex items-center gap-2 flex-wrap mt-8 pt-6 border-t border-gray-100">
+                    <span class="text-gray-400 text-sm">Теги:</span>
+                    <a href="#" class="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-cta-light hover:text-cta transition-all">Симболон</a>
+                    <a href="#" class="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-cta-light hover:text-cta transition-all">Гадание</a>
+                    <a href="#" class="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-cta-light hover:text-cta transition-all">Расклады</a>
+                    <a href="#" class="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-cta-light hover:text-cta transition-all">Отношения</a>
+                    <a href="#" class="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-cta-light hover:text-cta transition-all">Здоровье</a>
+                </div>
+
+                <!-- Share -->
+                <div class="flex items-center gap-3 mt-4">
+                    <span class="text-gray-400 text-sm">Поделиться:</span>
+                    <a href="#" class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-blue-100 hover:text-blue-600 transition-all">
+                        <span class="iconify" data-icon="mdi:vk" data-width="18"></span>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-blue-100 hover:text-blue-500 transition-all">
+                        <span class="iconify" data-icon="mdi:telegram" data-width="18"></span>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-all">
+                        <span class="iconify" data-icon="mdi:link-variant" data-width="18"></span>
+                    </a>
+                </div>
+
+                <!-- ПОХОЖИЕ СТАТЬИ -->
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-1 h-7 bg-cta rounded-full"></div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-gray-900">Читайте также</h2>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <a href="#" class="related-card block">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://picsum.photos/seed/taro-situation/500/300.jpg" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                                <h4 class="text-gray-900 font-semibold text-[15px] mt-2 leading-snug">Значение карт Таро на ситуацию</h4>
+                                <p class="text-gray-400 text-xs mt-1">13 мар 2024</p>
+                            </div>
+                        </a>
+                        <a href="#" class="related-card block">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://picsum.photos/seed/taro-love-r/500/300.jpg" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                                <h4 class="text-gray-900 font-semibold text-[15px] mt-2 leading-snug">Значение Таро в отношениях и любви</h4>
+                                <p class="text-gray-400 text-xs mt-1">7 мар 2024</p>
+                            </div>
+                        </a>
+                        <a href="#" class="related-card block">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://picsum.photos/seed/runes-child-r/500/300.jpg" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Руны</span>
+                                <h4 class="text-gray-900 font-semibold text-[15px] mt-2 leading-snug">Руны на здоровье ребенка</h4>
+                                <p class="text-gray-400 text-xs mt-1">23 мар 2024</p>
+                            </div>
+                        </a>
+                        <a href="#" class="related-card block">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://picsum.photos/seed/runes-lonely-r/500/300.jpg" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Руны</span>
+                                <h4 class="text-gray-900 font-semibold text-[15px] mt-2 leading-snug">Руны одиночества</h4>
+                                <p class="text-gray-400 text-xs mt-1">21 мар 2024</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- RIGHT: Sidebar -->
+            <aside class="sticky-side space-y-6">
+
+                <!-- КУРС — главная CTA боковой панели -->
+                <div class="course-side-card bg-white">
+                    <div class="h-44 overflow-hidden">
+                        <img src="https://picsum.photos/seed/simbolon-course-side/400/250.jpg" alt="Курс Карты Симболон" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[10px] font-bold text-cta bg-cta-light px-2 py-0.5 rounded">ПЛАТНЫЙ КУРС</span>
+                        </div>
+                        <h3 class="text-gray-900 font-bold text-lg leading-snug mb-2">Полный курс «Карты Симболон»</h3>
+                        <p class="text-gray-500 text-sm mb-4 leading-relaxed">40 карт, все расклады, трактовки, практика с обратной связью от наставника.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[11px] text-gray-500 bg-gray-100 px-2 py-1 rounded-md">10 уроков</span>
+                            <span class="text-[11px] text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Наставник</span>
+                            <span class="text-[11px] text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Сертификат</span>
+                        </div>
+                        <a href="#" class="btn-cta w-full py-3.5 rounded-xl text-base justify-center">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Бесплатный курс -->
+                <div class="bg-white rounded-2xl p-5 border-2 border-green-200 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+                            <span class="iconify text-green-600" data-icon="mdi:check" data-width="14"></span>
+                        </span>
+                        <span class="text-xs font-bold text-green-700">БЕСПЛАТНО</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-base mb-2">Знакомство с Симболон</h3>
+                    <p class="text-gray-500 text-sm mb-4">1 занятие — узнайте, подходит ли вам этот оракул.</p>
+                    <a href="#" class="btn-gold w-full py-3 rounded-xl text-sm justify-center">
+                        Записаться
+                    </a>
+                </div>
+
+                <!-- Популярные статьи -->
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+                    <h3 class="text-gray-900 font-bold text-base mb-4 flex items-center gap-2">
+                        <span class="iconify text-cta" data-icon="mdi:trending-up" data-width="18"></span>
+                        Популярное
+                    </h3>
+                    <div class="space-y-4">
+                        <a href="#" class="flex gap-3 group">
+                            <img src="https://picsum.photos/seed/taro-hands-sm/100/100.jpg" alt="" class="w-16 h-16 rounded-lg object-cover shrink-0">
+                            <div>
+                                <h4 class="text-gray-900 text-sm font-medium leading-snug group-hover:text-cta transition-colors">Как сделать карты Таро своими руками?</h4>
+                                <p class="text-gray-400 text-xs mt-1">22 фев 2022</p>
+                            </div>
+                        </a>
+                        <a href="#" class="flex gap-3 group">
+                            <img src="https://picsum.photos/seed/runes-debt-sm/100/100.jpg" alt="" class="w-16 h-16 rounded-lg object-cover shrink-0">
+                            <div>
+                                <h4 class="text-gray-900 text-sm font-medium leading-snug group-hover:text-cta transition-colors">Руны избавления от долгов</h4>
+                                <p class="text-gray-400 text-xs mt-1">26 янв 2024</p>
+                            </div>
+                        </a>
+                        <a href="#" class="flex gap-3 group">
+                            <img src="https://picsum.photos/seed/taro-ritual-sm/100/100.jpg" alt="" class="w-16 h-16 rounded-lg object-cover shrink-0">
+                            <div>
+                                <h4 class="text-gray-900 text-sm font-medium leading-snug group-hover:text-cta transition-colors">Обряды с картами Таро</h4>
+                                <p class="text-gray-400 text-xs mt-1">15 июл 2023</p>
+                            </div>
+                        </a>
+                        <a href="#" class="flex gap-3 group">
+                            <img src="https://picsum.photos/seed/taro-health-sm/100/100.jpg" alt="" class="w-16 h-16 rounded-lg object-cover shrink-0">
+                            <div>
+                                <h4 class="text-gray-900 text-sm font-medium leading-snug group-hover:text-cta transition-colors">Значение карт Таро на здоровье</h4>
+                                <p class="text-gray-400 text-xs mt-1">5 мар 2024</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Другие курсы -->
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+                    <h3 class="text-gray-900 font-bold text-base mb-4 flex items-center gap-2">
+                        <span class="iconify text-cta" data-icon="mdi:school-outline" data-width="18"></span>
+                        Курсы по теме
+                    </h3>
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center justify-between gap-3 p-3 rounded-xl bg-gray-50 hover:bg-cta-light transition-colors group">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-gray-900 text-sm font-medium group-hover:text-cta transition-colors truncate">Вселенная Таро</h4>
+                                <p class="text-gray-400 text-xs">Полный курс</p>
+                            </div>
+                            <span class="iconify text-gray-300 group-hover:text-cta transition-colors" data-icon="mdi:chevron-right" data-width="18"></span>
+                        </a>
+                        <a href="#" class="flex items-center justify-between gap-3 p-3 rounded-xl bg-gray-50 hover:bg-cta-light transition-colors group">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-gray-900 text-sm font-medium group-hover:text-cta transition-colors truncate">Таро для начинающих</h4>
+                                <p class="text-gray-400 text-xs">Бесплатно</p>
+                            </div>
+                            <span class="iconify text-gray-300 group-hover:text-cta transition-colors" data-icon="mdi:chevron-right" data-width="18"></span>
+                        </a>
+                        <a href="#" class="flex items-center justify-between gap-3 p-3 rounded-xl bg-gray-50 hover:bg-cta-light transition-colors group">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-gray-900 text-sm font-medium group-hover:text-cta transition-colors truncate">Скандинавские руны</h4>
+                                <p class="text-gray-400 text-xs">Полный курс</p>
+                            </div>
+                            <span class="iconify text-gray-300 group-hover:text-cta transition-colors" data-icon="mdi:chevron-right" data-width="18"></span>
+                        </a>
+                        <a href="#" class="flex items-center justify-between gap-3 p-3 rounded-xl bg-gray-50 hover:bg-cta-light transition-colors group">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-gray-900 text-sm font-medium group-hover:text-cta transition-colors truncate">Волшебные карты Ленорман</h4>
+                                <p class="text-gray-400 text-xs">Полный курс</p>
+                            </div>
+                            <span class="iconify text-gray-300 group-hover:text-cta transition-colors" data-icon="mdi:chevron-right" data-width="18"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-14 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+            <div>
+                <div class="flex items-center gap-2.5 mb-4">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-cta"><span class="text-white font-bold text-sm">Э</span></div>
+                    <span class="text-white font-semibold text-lg">ЭЛАРА</span>
+                </div>
+                <p class="text-gray-400 text-[15px] leading-relaxed">Международный проект в области эзотерики, астрологии и самопознания.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Курсы</h4>
+                <div class="space-y-2.5">
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Бесплатные курсы</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Платные курсы</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Мини-курсы</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Информация</h4>
+                <div class="space-y-2.5">
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">О нас</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Блог</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Отзывы</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">FAQ</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Мы в соцсетях</h4>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span class="iconify" data-icon="mdi:vk" data-width="28" style="color:#0077FF"></span></a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span class="iconify" data-icon="mdi:telegram" data-width="28" style="color:#26A5E4"></span></a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span class="iconify" data-icon="mdi:youtube" data-width="28" style="color:#FF0000"></span></a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span class="iconify" data-icon="mdi:instagram" data-width="28" style="color:#E1306C"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-500 text-sm">© 2025 Академия Элара. Все права защищены.</p>
+            <div class="flex items-center gap-5 flex-wrap justify-center">
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Политика конфиденциальности</a>
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Пользовательское соглашение</a>
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Публичная оферта</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    const mobBtn=document.getElementById('mobBtn'),mobMenu=document.getElementById('mobMenu'),mobIcon=document.getElementById('mobIcon');
+    let mobOpen=false;
+    mobBtn.addEventListener('click',()=>{mobOpen=!mobOpen;mobMenu.classList.toggle('open',mobOpen);mobIcon.setAttribute('data-icon',mobOpen?'mdi:close':'mdi:menu')});
+    document.querySelectorAll('#mobMenu a').forEach(l=>l.addEventListener('click',()=>{mobOpen=false;mobMenu.classList.remove('open');mobIcon.setAttribute('data-icon','mdi:menu')}));
+
+    // Reading progress bar
+    window.addEventListener('scroll',()=>{
+        const h=document.documentElement,b=document.body,st='scrollTop',sh='scrollHeight';
+        const pct=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100;
+        document.getElementById('progressBar').style.width=pct+'%';
+    });
+
+    // Header scroll
+    window.addEventListener('scroll',()=>{const h=document.getElementById('header');if(window.scrollY>50){h.style.boxShadow='0 1px 12px rgba(0,0,0,.06)';h.style.background='rgba(255,255,255,.98)'}else{h.style.boxShadow='none';h.style.background='rgba(255,255,255,.95)'}});
+</script>
+</body>
+</html>

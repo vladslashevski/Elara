@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог — Академия Элара | Статьи о Таро, рунах, астрологии, свечной магии</title>
+    <meta name="description" content="Блог академии Элара — статьи о Таро, рунах, Симболон, свечной магии, астрологии. Схемы раскладов, рунические ставы, ритуалы.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cta: { DEFAULT:'#c0392b', hover:'#a93226', light:'#fef2f2', dark:'#922b21' },
+                    },
+                    fontFamily: { sans:['Inter','sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:16px;line-height:1.6}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:#f5f5f5}
+        ::-webkit-scrollbar-thumb{background:#d4d4d4;border-radius:4px}
+
+        .nav-link{position:relative}
+        .nav-link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:#c0392b;transition:width .3s}
+        .nav-link:hover::after{width:100%}
+        .nav-link:hover{color:#c0392b}
+
+        .btn-cta{background:#c0392b;color:#fff;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+        .btn-cta:hover{background:#a93226;box-shadow:0 4px 16px rgba(192,57,43,.3);transform:translateY(-1px)}
+        .btn-cta-outline{border:2px solid #c0392b;color:#c0392b;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+        .btn-cta-outline:hover{background:#c0392b;color:#fff}
+
+        .featured-card{transition:all .35s ease}
+        .featured-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+        .featured-card:hover .featured-img{transform:scale(1.05)}
+        .featured-img{transition:transform .5s ease}
+
+        .article-card{transition:all .3s ease;border:1px solid #e5e5e5}
+        .article-card:hover{border-color:#c0392b;box-shadow:0 6px 24px rgba(0,0,0,.06);transform:translateY(-2px)}
+        .article-card:hover .article-img{transform:scale(1.05)}
+        .article-img{transition:transform .5s ease}
+
+        .cat-pill{transition:all .25s ease;cursor:pointer;white-space:nowrap}
+        .cat-pill:hover{border-color:#c0392b;color:#c0392b;background:#fef2f2}
+        .cat-pill.active{background:#c0392b;color:#fff;border-color:#c0392b}
+
+        .cat-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+        .cat-scroll::-webkit-scrollbar{display:none}
+
+        .pagination-btn{transition:all .25s ease}
+        .pagination-btn:hover{background:#c0392b;color:#fff;border-color:#c0392b}
+
+        .toast-box{position:fixed;bottom:30px;right:30px;background:#fff;border:1px solid #22c55e;color:#16a34a;padding:18px 28px;border-radius:14px;transform:translateY(120px);opacity:0;transition:all .4s;z-index:9999;font-size:15px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+        .toast-box.visible{transform:translateY(0);opacity:1}
+
+        .mob-menu{max-height:0;overflow:hidden;transition:max-height .4s}
+        .mob-menu.open{max-height:500px}
+
+        @keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+        .fade-in{animation:fadeIn .5s ease forwards}
+        .article-hidden{display:none}
+    </style>
+</head>
+<body>
+
+<div id="toast" class="toast-box"><div class="flex items-center gap-3"><span class="iconify" data-icon="mdi:check-circle" data-width="22"></span><span id="toastMsg">OK</span></div></div>
+
+<!-- HEADER -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 transition-all duration-300" style="backdrop-filter:blur(16px);border-bottom:1px solid #f0f0f0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 lg:h-[72px]">
+            <a href="#" class="flex items-center gap-2.5 shrink-0">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center bg-cta"><span class="text-white font-bold text-base">Э</span></div>
+                <span class="text-gray-900 font-semibold text-lg tracking-tight">ЭЛАРА</span>
+            </a>
+            <nav class="hidden xl:flex items-center gap-6">
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">О нас</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Обучение</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Мини-курсы</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Преподаватели</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Рекомендуем</a>
+                <a href="#" class="nav-link text-[13px] text-cta font-medium transition-colors">Блог</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">FAQ</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Отзывы</a>
+                <a href="#" class="nav-link text-[13px] text-gray-600 transition-colors">Контакты</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="https://t.me/your_bot" target="_blank" class="btn-cta px-5 py-2.5 rounded-xl text-sm"><span class="iconify" data-icon="mdi:robot-outline" data-width="18"></span><span class="hidden sm:inline">Написать боту</span><span class="sm:hidden">Бот</span></a>
+                <button id="mobBtn" class="xl:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors"><span class="iconify" data-icon="mdi:menu" data-width="26" id="mobIcon"></span></button>
+            </div>
+        </div>
+        <div id="mobMenu" class="mob-menu xl:hidden">
+            <div class="py-4 flex flex-col gap-1 border-t border-gray-100">
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">О нас</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Обучение</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Мини-курсы</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Преподаватели</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Рекомендуем</a>
+                <a href="#" class="text-cta bg-cta-light px-3 py-2.5 rounded-lg text-[15px] font-medium">Блог</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">FAQ</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Отзывы</a>
+                <a href="#" class="text-gray-600 hover:text-cta hover:bg-cta-light px-3 py-2.5 rounded-lg transition-all text-[15px]">Контакты</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="pt-20 lg:pt-[88px] bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+        <div class="flex items-center gap-2 text-sm">
+            <a href="#" class="text-gray-400 hover:text-cta transition-colors">Главная</a>
+            <span class="iconify text-gray-300" data-icon="mdi:chevron-right" data-width="16"></span>
+            <span class="text-gray-700 font-medium">Блог</span>
+        </div>
+    </div>
+</div>
+
+<!-- HERO BLOG -->
+<section class="relative overflow-hidden bg-gray-50 pb-10 sm:pb-14">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-30" style="background:radial-gradient(circle,rgba(192,57,43,.08),transparent 70%);transform:translate(30%,-40%)"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative">
+        <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 bg-cta-light text-cta px-3 py-1.5 rounded-full text-xs font-semibold mb-4">
+                <span class="iconify" data-icon="mdi:post-outline" data-width="14"></span>
+                Более 200 статей
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">Блог академии Элара</h1>
+            <p class="text-gray-500 text-lg leading-relaxed">Статьи о Таро, рунах, астрологии, свечной магии и многом другом. Погрузитесь в мир эзотерических знаний — от основ до продвинутых техник.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED (было "Популярные статьи") -->
+<section class="py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center gap-3 mb-8">
+            <div class="w-1 h-8 bg-cta rounded-full"></div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Популярное</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <a href="#" class="featured-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 block">
+                <div class="h-52 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-hands/600/400.jpg" alt="" class="featured-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                        <span class="text-gray-400 text-xs">22 фев 2022</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-lg leading-snug mb-2">Как сделать карты Таро своими руками?</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Пошаговая инструкция по созданию собственного колоды Таро с нуля — от выбора материалов до освящения карт.</p>
+                </div>
+            </a>
+            <a href="#" class="featured-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 block">
+                <div class="h-52 overflow-hidden">
+                    <img src="https://picsum.photos/seed/runes-debt/600/400.jpg" alt="" class="featured-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Руны</span>
+                        <span class="text-gray-400 text-xs">26 янв 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-lg leading-snug mb-2">Руны избавления от долгов</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Какие руны помогают избавиться от финансовых проблем и долгов, правила составления ставов и проведения ритуалов.</p>
+                </div>
+            </a>
+            <a href="#" class="featured-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 block">
+                <div class="h-52 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-ritual/600/400.jpg" alt="" class="featured-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                        <span class="text-gray-400 text-xs">15 июл 2023</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-lg leading-snug mb-2">Обряды с картами Таро</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Подробный обзор магических обрядов с использованием карт Таро для различных жизненных ситуаций.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6"><div style="height:1px;background:#e5e5e5"></div></div>
+
+<!-- КАТЕГОРИИ (теперь горизонтальные таблетки) -->
+<section class="py-8 sm:py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between mb-5">
+            <h2 class="text-lg font-bold text-gray-900">Категории</h2>
+            <span class="text-gray-400 text-sm hidden sm:block">Нажмите, чтобы отфильтровать</span>
+        </div>
+        <div class="cat-scroll flex gap-2.5 pb-2 -mx-4 px-4">
+            <button class="cat-pill active flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium" data-cat="all" onclick="filterCat('all',this)">
+                <span class="iconify" data-icon="mdi:view-grid-outline" data-width="16"></span>
+                Все статьи
+                <span class="text-xs opacity-70 ml-1">200+</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="taro" onclick="filterCat('taro',this)">
+                <span class="iconify" data-icon="mdi:cards" data-width="16"></span>
+                Таро
+                <span class="text-xs opacity-50 ml-1">45</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="rasklady" onclick="filterCat('rasklady',this)">
+                <span class="iconify" data-icon="mdi:grid" data-width="16"></span>
+                Схемы раскладов
+                <span class="text-xs opacity-50 ml-1">32</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="mladshie" onclick="filterCat('mladshie',this)">
+                <span class="iconify" data-icon="mdi:cards-outline" data-width="16"></span>
+                Младшие арканы
+                <span class="text-xs opacity-50 ml-1">18</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="starshie" onclick="filterCat('starshie',this)">
+                <span class="iconify" data-icon="mdi:star-four-points" data-width="16"></span>
+                Старшие арканы
+                <span class="text-xs opacity-50 ml-1">22</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="simbolon" onclick="filterCat('simbolon',this)">
+                <span class="iconify" data-icon="mdi:eye-outline" data-width="16"></span>
+                Симболон
+                <span class="text-xs opacity-50 ml-1">12</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="runy" onclick="filterCat('runy',this)">
+                <span class="iconify" data-icon="mdi:diamond-stone" data-width="16"></span>
+                Руны
+                <span class="text-xs opacity-50 ml-1">38</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="stavu" onclick="filterCat('stavu',this)">
+                <span class="iconify" data-icon="mdi:vector-polyline" data-width="16"></span>
+                Рунические ставы
+                <span class="text-xs opacity-50 ml-1">15</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="svechi" onclick="filterCat('svechi',this)">
+                <span class="iconify" data-icon="mdi:candle" data-width="16"></span>
+                Свечи
+                <span class="text-xs opacity-50 ml-1">10</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="ritualy" onclick="filterCat('ritualy',this)">
+                <span class="iconify" data-icon="mdi:fire" data-width="16"></span>
+                Ритуалы со свечами
+                <span class="text-xs opacity-50 ml-1">8</span>
+            </button>
+            <button class="cat-pill flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600" data-cat="astro" onclick="filterCat('astro',this)">
+                <span class="iconify" data-icon="mdi:home-astro" data-width="16"></span>
+                Дома в астрологии
+                <span class="text-xs opacity-50 ml-1">14</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- СТАТЬИ -->
+<section class="pb-16 sm:pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div id="articlesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="simbolon">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/simbolon-gad/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Симболон</span>
+                        <span class="text-gray-400 text-xs">28 окт 2025</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Гадание на картах Симболон</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Гадание на оракуле Симболон — это способ глубже понять свои внутренние состояния, мотивы и отношения с окружающими.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Анна Андреева
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="runy">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/runes-child/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Руны</span>
+                        <span class="text-gray-400 text-xs">23 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Руны на здоровье ребенка</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">В древних скандинавских традициях большую роль играли руны – таинственные символы, которым приписывались магические свойства.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="runy">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/runes-lonely/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Руны</span>
+                        <span class="text-gray-400 text-xs">21 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Руны одиночества</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Руны – загадочные символы, используемые с древних времён для самых разнообразных целей, от гадания до магических ритуалов.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="stavu">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/runes-kradnik/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Рунические ставы</span>
+                        <span class="text-gray-400 text-xs">19 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Рунический крадник</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Крадник – это магический ритуал с использованием рун, цель которого заключается в перенаправлении благ или энергий.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="runy">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/runes-weapon/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Руны</span>
+                        <span class="text-gray-400 text-xs">17 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Руны на оружие</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">История знает много примеров оружия, украшенного рунами для придания ему особых свойств.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="runy">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/runes-health2/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Руны</span>
+                        <span class="text-gray-400 text-xs">15 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Руна судьбы</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Информация о значениях и целях применения пустой руны есть на просторах интернета, но, если разобраться, пустая руна не несёт в себе никакого значения.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="taro">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-situation/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                        <span class="text-gray-400 text-xs">13 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Значение карт Таро на ситуацию</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Карты Таро способны не только рассказать, как будет развиваться жизнь человека в определённой сфере.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="taro">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-work/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                        <span class="text-gray-400 text-xs">11 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Значение карт Таро на работу</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Профессиональная деятельность занимает не последнее место в жизни современного человека.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="taro">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-future/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                        <span class="text-gray-400 text-xs">9 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Значение карт Таро при гадании на будущее</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Карты Таро – инструмент, который позволяет получить информацию об изменениях в разных сферах жизни.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="taro">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-love/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                        <span class="text-gray-400 text-xs">7 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Значение Таро в отношениях и любви</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Расклады Таро на любовь делают как новички, так и опытные тарологи.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="taro">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/taro-health/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Таро</span>
+                        <span class="text-gray-400 text-xs">5 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Значение карт Таро на здоровье</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Здоровье – одна из сфер человеческой жизни, которая может быть детально рассмотрена с помощью расклада карт Таро.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="article-card rounded-2xl overflow-hidden bg-white block" data-cat="runy">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://picsum.photos/seed/runes-fate/600/400.jpg" alt="" class="article-img w-full h-full object-cover">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                        <span class="text-xs font-medium text-cta bg-cta-light px-2 py-0.5 rounded">Руны</span>
+                        <span class="text-gray-400 text-xs">3 мар 2024</span>
+                    </div>
+                    <h3 class="text-gray-900 font-bold text-[15px] leading-snug mb-2">Руны на импотенцию</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">Во времена викингов, руны не только использовались как письменность, но и как средство с магическими свойствами.</p>
+                    <div class="text-gray-400 text-xs flex items-center gap-1.5">
+                        <span class="iconify" data-icon="mdi:account-circle-outline" data-width="14"></span>
+                        Алёна Лаская
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Пустое состояние -->
+        <div id="emptyState" class="hidden text-center py-16">
+            <span class="iconify text-gray-300 mx-auto mb-4" data-icon="mdi:file-search-outline" data-width="64"></span>
+            <p class="text-gray-400 text-lg">В этой категории пока нет статей на этой странице</p>
+            <button class="btn-cta-outline mt-4 px-5 py-2.5 rounded-xl text-sm" onclick="filterCat('all',document.querySelector('[data-cat=all]'))">Показать все статьи</button>
+        </div>
+
+        <!-- ПАГИНАЦИЯ -->
+        <div class="flex items-center justify-center gap-2 mt-12">
+            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-400">
+                <span class="iconify" data-icon="mdi:chevron-left" data-width="20"></span>
+            </button>
+            <button class="pagination-btn w-10 h-10 rounded-lg border-2 border-cta bg-cta text-white flex items-center justify-center font-medium text-sm">1</button>
+            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 font-medium text-sm">2</button>
+            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 font-medium text-sm">3</button>
+            <span class="text-gray-400 px-1">...</span>
+            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 font-medium text-sm">29</button>
+            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-400">
+                <span class="iconify" data-icon="mdi:chevron-right" data-width="20"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- CTA ПОДПИСКА -->
+<section class="bg-gray-50 py-14 sm:py-18">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="bg-white rounded-3xl p-10 sm:p-14 border-2 border-cta/15 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-60 h-60 rounded-full opacity-25" style="background:radial-gradient(circle,rgba(192,57,43,.1),transparent 70%);transform:translate(-30%,-30%)"></div>
+            <div class="absolute bottom-0 right-0 w-48 h-48 rounded-full opacity-20" style="background:radial-gradient(circle,rgba(192,57,43,.1),transparent 70%);transform:translate(30%,30%)"></div>
+            <div class="relative">
+                <div class="w-14 h-14 rounded-2xl bg-cta-light flex items-center justify-center mx-auto mb-5">
+                    <span class="iconify text-cta" data-icon="mdi:bell-ring-outline" data-width="28"></span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Не пропустите новые статьи</h2>
+                <p class="text-gray-500 text-lg mb-8 max-w-lg mx-auto">Подпишитесь на нашего бота в Telegram и получайте лучшие статьи по эзотерике первыми — бесплатно.</p>
+                <a href="https://t.me/your_bot" target="_blank" class="btn-cta px-8 py-4 rounded-xl text-base">
+                    <span class="iconify" data-icon="mdi:telegram" data-width="22"></span>
+                    Подписаться в Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-14 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+            <div>
+                <div class="flex items-center gap-2.5 mb-4">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-cta"><span class="text-white font-bold text-sm">Э</span></div>
+                    <span class="text-white font-semibold text-lg">ЭЛАРА</span>
+                </div>
+                <p class="text-gray-400 text-[15px] leading-relaxed">Международный проект в области эзотерики, астрологии и самопознания.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Курсы</h4>
+                <div class="space-y-2.5">
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Бесплатные курсы</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Платные курсы</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Мини-курсы</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Информация</h4>
+                <div class="space-y-2.5">
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">О нас</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Блог</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">Отзывы</a>
+                    <a href="#" class="block text-gray-400 text-[15px] hover:text-white transition-colors">FAQ</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-base mb-4">Мы в соцсетях</h4>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span class="iconify" data-icon="mdi:vk" data-width="28" style="color:#0077FF"></span></a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span class="iconify" data-icon="mdi:telegram" data-width="28" style="color:#26A5E4"></span></a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span class="iconify" data-icon="mdi:youtube" data-width="28" style="color:#FF0000"></span></a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span class="iconify" data-icon="mdi:instagram" data-width="28" style="color:#E1306C"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-500 text-sm">© 2025 Академия Элара. Все права защищены.</p>
+            <div class="flex items-center gap-5 flex-wrap justify-center">
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Политика конфиденциальности</a>
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Пользовательское соглашение</a>
+                <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Публичная оферта</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    const mobBtn=document.getElementById('mobBtn'),mobMenu=document.getElementById('mobMenu'),mobIcon=document.getElementById('mobIcon');
+    let mobOpen=false;
+    mobBtn.addEventListener('click',()=>{mobOpen=!mobOpen;mobMenu.classList.toggle('open',mobOpen);mobIcon.setAttribute('data-icon',mobOpen?'mdi:close':'mdi:menu')});
+    document.querySelectorAll('#mobMenu a').forEach(l=>l.addEventListener('click',()=>{mobOpen=false;mobMenu.classList.remove('open');mobIcon.setAttribute('data-icon','mdi:menu')}));
+
+    // Filter categories
+    function filterCat(cat,btn){
+        document.querySelectorAll('.cat-pill').forEach(p=>{p.classList.remove('active');p.style.background='';p.style.color='';p.style.borderColor=''});
+        btn.classList.add('active');
+
+        const cards=document.querySelectorAll('#articlesGrid .article-card');
+        let visible=0;
+        cards.forEach(c=>{
+            if(cat==='all'||c.dataset.cat===cat){
+                c.classList.remove('article-hidden');c.classList.add('fade-in');visible++;
+            }else{
+                c.classList.add('article-hidden');c.classList.remove('fade-in');
+            }
+        });
+        document.getElementById('emptyState').classList.toggle('hidden',visible>0);
+    }
+
+    // Header scroll
+    window.addEventListener('scroll',()=>{const h=document.getElementById('header');if(window.scrollY>50){h.style.boxShadow='0 1px 12px rgba(0,0,0,.06)';h.style.background='rgba(255,255,255,.98)'}else{h.style.boxShadow='none';h.style.background='rgba(255,255,255,.95)'}});
+
+    function showToast(t){const e=document.getElementById('toast');document.getElementById('toastMsg').textContent=t;e.classList.add('visible');setTimeout(()=>e.classList.remove('visible'),4000)}
+</script>
+</body>
+</html>

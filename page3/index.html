@@ -632,3 +632,25 @@
 </script>
 </body>
 </html>
+
+<script>
+    // Запрещаем вызов контекстного меню (правая кнопка мыши)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert('Просмотр исходного кода отключён!');
+        return false;
+    });
+    
+    // Отключаем комбинации клавиш для просмотра кода
+    document.onkeydown = function(e) {
+        // F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+        if (e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+            (e.ctrlKey && e.key === 'u') || 
+            (e.ctrlKey && e.key === 's')) {
+            e.preventDefault();
+            alert('Просмотр исходного кода отключён!');
+            return false;
+        }
+    };
+</script>
